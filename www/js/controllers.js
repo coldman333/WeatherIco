@@ -41,11 +41,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('DashbordCtrl', function($scope, $stateParams) {
+.controller('DashbordCtrl', ["$http","$scope", "$stateParams",function($scope, $stateParams) {
+      $scope.weather = "";
+  $http.get("http://api.apixu.com/v1/current.json?key=6b88f72fe84848ada87134645152710&q=kiev")
+        .success(function(data){
+            $scope.weather=data;
+           
+        });   
 
 
-
-})
+}])
 .controller('SettingsCtrl', function($scope, $stateParams) {
 
       
